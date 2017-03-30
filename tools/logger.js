@@ -34,7 +34,7 @@ const log4jsConfig = {
 };
 
 log4js.configure(log4jsConfig);
-var logger = log4js.getLogger('main');
+let logger = log4js.getLogger('main');
 logger.setLevel('AUTO');
 logger.log4js = log4js;
 
