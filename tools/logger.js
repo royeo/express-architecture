@@ -1,7 +1,11 @@
 'use strict';
 
+const fse = require('fs-extra');
 const log4js = require('log4js');
 const path = require('path');
+
+fse.mkdirsSync(config.log.dir);
+fse.mkdirsSync(config.log.dir + '/main');
 
 const log4jsConfig = {
   replaceConsole: config.log.replaceConsole,
@@ -33,8 +37,8 @@ const log4jsConfig = {
 };
 
 log4js.configure(log4jsConfig);
-let log = log4js.getLogger('main');
-log.setLevel('AUTO');
-log.log4js = log4js;
+let logger = log4js.getLogger('main');
+logger.setLevel('AUTO');
+logger.log4js = log4js;
 
-module.exports = log;
+module.exports = logger;
