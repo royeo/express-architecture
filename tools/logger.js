@@ -1,5 +1,8 @@
+'use strict';
+
 const fse = require('fs-extra');
 const log4js = require('log4js');
+const path = require('path');
 
 fse.mkdirsSync(config.log.dir);
 fse.mkdirsSync(config.log.dir + '/main');
@@ -9,7 +12,7 @@ const log4jsConfig = {
   level: config.log.level,
   appenders: [
     {
-      type: "console"
+      type: 'console'
     },
     {
       type: 'dateFile',
@@ -19,7 +22,7 @@ const log4jsConfig = {
       category: 'main',
       maxLogSize: 20480,
       backups: 3
-    }, 
+    },
     {
       type: 'logLevelFilter',
       level: 'ERROR',

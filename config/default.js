@@ -1,5 +1,5 @@
-// 默认配置
 'use strict';
+
 const pkg = require('../package.json');
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
   },
   log: {
     dir            : '../logs',
-    nolog          : /\.(js|css|png|jpg|jpeg|ico|svg|gif)/,  
+    nolog          : /\.(js|css|png|jpg|jpeg|ico|svg|gif)/,
     format         : ':remote-addr :method :url :status :response-time ms :user-agent :content-length',
     replaceConsole : true,
     level          : 'AUTO',
