@@ -772,13 +772,13 @@
     quotes: [2, single, avoid-escape]
 
     # 必须写JSDoc
-    require-jsdoc: [error, {
-      require: {
-        FunctionDeclaration: true,
-        MethodDefinition: false,
-        ClassDeclaration: false
-      }
-    }]
+    # require-jsdoc: [error, {
+    #   require: {
+    #     FunctionDeclaration: true,
+    #     MethodDefinition: false,
+    #     ClassDeclaration: false
+    #   }
+    # }]
 
     # 当`;`出现在表达式中间时，统一在它的后面添加一个空格，前面不允许有空格
     # --fix
