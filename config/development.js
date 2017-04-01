@@ -3,5 +3,8 @@
 module.exports = {
   web: {
     
+  },
+  mysql: {
+    
   }
 };

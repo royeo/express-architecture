@@ -12,9 +12,6 @@ const log4jsConfig = {
   level: config.log.level,
   appenders: [
     {
-      type: 'console'
-    },
-    {
       type: 'dateFile',
       filename: path.join(config.log.dir, 'main/'),
       pattern: 'yyyyMMdd',
@@ -36,9 +33,15 @@ const log4jsConfig = {
   ]
 };
 
+if (config.log.console) {
+  log4jsConfig.appenders.push({
+    type: 'console'
+  });
+}
+
 log4js.configure(log4jsConfig);
 let logger = log4js.getLogger('main');
-logger.setLevel('AUTO');
+logger.setLevel(config.log.level);
 logger.log4js = log4js;
 
 module.exports = logger;

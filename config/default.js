@@ -19,6 +19,6 @@ module.exports = {
     format         : ':remote-addr :method :url :status :response-time ms :user-agent :content-length',
     replaceConsole : true,
     level          : 'AUTO',
-    console        : false
+    console        : true
   }
 };
