@@ -2,7 +2,7 @@
 
 let express = require('express');
 let router = express.Router();
-let cache = require('../lib/cache/cache');
+let cache = require('../lib/cache/cacheClass');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
