@@ -2,6 +2,7 @@
 
 global.ROOT_PATH = __dirname;
 global.path = require('path');
+global.fs = require('fs');
 
 global.config = require('config');
 global.Promise = require('bluebird');
