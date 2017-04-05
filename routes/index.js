@@ -1,21 +1,21 @@
 'use strict';
 
-let express = require('express');
-let router = express.Router();
+const express = require('express');
+const fs = require('fs');
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-  cache.get('key').then(result => {
-    if (result) {
-      res.send('welcome again');
-    } else {
-      cache.set('key', 'value', 10).then(() => {
-        res.send('welcome first');
-      });
-    }
-  }).catch(err => {
-    logger.err(err.message);
+function createRouter(versionDir) {
+  let router = express.Router();
+  fs.readdirSync(versionDir).forEach(file => {
+    require(path.join(versionDir, file))(router);
   });
-});
+  return router;
+}
+
+const router = express.Router();
+const v1Admin = createRouter(path.join(__dirname, 'v1/admin'));
+const v1Web = createRouter(path.join(__dirname, 'v1/web'));
+
+router.use('/webapi/v1', v1Web);
+router.use('/adminapi/v1', v1Admin);
 
 module.exports = router;
