@@ -2,7 +2,6 @@
 
 let express = require('express');
 let router = express.Router();
-let cache = require('../lib/cache/cacheClass');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -14,8 +13,8 @@ router.get('/', function (req, res, next) {
         res.send('welcome first');
       });
     }
-  }).catch((err) => {
-    console.log(err.message);
+  }).catch(err => {
+    logger.err(err.message);
   });
 });
 
