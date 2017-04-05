@@ -9,7 +9,20 @@ module.exports = {
     port: 5555,
     name: pkg.name
   },
+  view: {
+    cache: {},
+    engine: 'ejs',
+    dir: 'views'
+  },
+  static: {
+    dir: path.join(__dirname, '../public'),
+    maxAge: 1000 * 60 * 60
+  },
   redis: {
+    host: '127.0.0.1',
+    port: 6379
+  },
+  redisSession: {
     host: '127.0.0.1',
     port: 6379
   },
