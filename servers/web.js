@@ -13,6 +13,7 @@ const responseTime = require('response-time');
 const compression = require('compression');
 
 const router = require('../routes');
+const finallyResp = require('../middlewares/finally-resp');
 
 const app = express();
 
@@ -54,6 +55,7 @@ app.use(function (req, res, next) {
   next({status: 'pageNotFound', code: 404});
 });
 
+// 错误处理
 app.use(finallyResp({
   format: 'JSON',
   encoding: 'utf8',
@@ -65,6 +67,10 @@ let server = http.createServer(app);
 function start() {
   server.listen(config.web.port, function () {
     logger.info(config.web.name, config.web.url, 'start up');
+  });
+  return db.sequelize.sync({force: false}).catch(err => {
+    logger.error(err);
+    process.exit(1);
   });
 }
 
