@@ -1,7 +1,6 @@
 'use strict';
 
 const express = require('express');
-const fs = require('fs');
 
 function createRouter(versionDir) {
   let router = express.Router();
