@@ -11,3 +11,4 @@ global._ = require('lodash');
 global.logger = require('./tools/logger');
 global.cache = require('./lib/cache/cache');
 global.db = require('./models');
+global.handleError = require('./middlewares/error-handle');
