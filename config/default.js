@@ -40,9 +40,9 @@ module.exports = {
     password: '',
     port: 3306,
     database: 'test',
-    connectTimeout: 5000,
-    waitForConnections: true,
-    connectionLimit: 50,
+    // connectTimeout: 5000,
+    // waitForConnections: true,
+    // connectionLimit: 50,
     logging: true
   }
 };
