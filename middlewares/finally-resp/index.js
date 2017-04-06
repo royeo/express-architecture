@@ -1,6 +1,5 @@
 'use strict';
 
-const fs = require('fs');
 const http = require('http');
 const debug = require('debug')('middlewares:finallyResp');
 
@@ -96,5 +95,9 @@ module.exports = function (options) {
 };
 
 function logError(url, err) {
-
+  if (err instanceof Error || _.isError(err)) {
+    logger.error(`\nError Begin\n${err}\n${url}\nError End`);
+  } else {
+    logger.warn(`\nWarn Begin\n#${err}\n${url}\nWarn End`);
+  }
 }
