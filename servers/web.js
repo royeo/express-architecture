@@ -47,7 +47,6 @@ app.use(expressSession({
 
 // maxAge 设置缓存的有效期
 app.use(express.static(config.static.dir, {maxAge: config.static.maxAge}));
-app.use(favicon(path.join(__dirname, '../public/favicon.ico')));
 
 app.use(router);
 
