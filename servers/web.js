@@ -1,10 +1,7 @@
 'use strict';
 
-const http = require('http');
 const path = require('path');
-
 const express = require('express');
-const favicon = require('serve-favicon');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expressSession = require('express-session');
@@ -58,10 +55,8 @@ app.use(finallyResp({
   views: {}
 }));
 
-let server = http.createServer(app);
-
 function start() {
-  server.listen(config.web.port, function () {
+  app.listen(config.web.port, function () {
     logger.info(config.web.name, config.web.url, 'start up');
   });
   return db.sequelize.sync({force: false}).catch((err) => {
