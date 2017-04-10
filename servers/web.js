@@ -45,9 +45,6 @@ app.use(expressSession({
   cookie            : {maxAge: 1000 * 60 * 60 * 24 * 7}
 }));
 
-// maxAge 设置缓存的有效期
-app.use(express.static(config.static.dir, {maxAge: config.static.maxAge}));
-
 app.use(router);
 
 app.use(function (req, res, next) {
