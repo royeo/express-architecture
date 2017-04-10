@@ -4,7 +4,7 @@ const express = require('express');
 
 function createRouter(versionDir) {
   let router = express.Router();
-  fs.readdirSync(versionDir).forEach(file => {
+  fs.readdirSync(versionDir).forEach((file) => {
     require(path.join(versionDir, file))(router);
   });
   return router;
