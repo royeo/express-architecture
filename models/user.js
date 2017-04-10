@@ -16,13 +16,6 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
       commemt: '姓名'
     },
-    email: {
-      type: DataTypes.STRING(50),
-      primaryKey: false,
-      autoIncrement: false,
-      allowNull: false,
-      commemt: '邮箱'
-    },
     password: {
       type: DataTypes.STRING(50),
       primaryKey: false,
