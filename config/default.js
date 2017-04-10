@@ -4,9 +4,9 @@ const pkg = require('../package.json');
 
 module.exports = {
   web: {
-    url: 'http://127.0.0.1:5555',
+    url: 'http://127.0.0.1:6666',
     host: '127.0.0.1',
-    port: 5555,
+    port: 6666,
     name: pkg.name
   },
   view: {
