@@ -96,7 +96,7 @@ module.exports = function (options) {
 
 function logError(url, err) {
   if (err instanceof Error || _.isError(err)) {
-    logger.error(`\nError Begin\n${err}\n${url}\nError End`);
+    logger.error(`\n\n--------------------Error Begin--------------------\n\n${url}\n${err.stack}\n\n--------------------Error End--------------------\n`);
   } else {
     logger.warn(`\nWarn Begin\n#${err}\n${url}\nWarn End`);
   }
