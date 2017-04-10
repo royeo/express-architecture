@@ -9,7 +9,7 @@ let sequelize = new Sequelize(config.mysql.database, config.mysql.username, conf
   dialect: 'mysql',
   logging: function (output) {
     if (config.mysql.logging) {
-      logging.info(output);
+      logger.info(output);
     }
   }
 });
