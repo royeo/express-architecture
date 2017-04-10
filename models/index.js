@@ -14,14 +14,14 @@ let sequelize = new Sequelize(config.mysql.database, config.mysql.username, conf
   }
 });
 
-fs.readdirSync(__dirname).filter(file => {
+fs.readdirSync(__dirname).filter((file) => {
   return (file.indexOf('.') !== -1) && (file !== 'index.js');
-}).forEach(file => {
+}).forEach((file) => {
   let model = sequelize.import(path.join(__dirname, file));
   db[model.name] = model;
 });
 
-Object.keys(db).forEach(modelName => {
+Object.keys(db).forEach((modelName) => {
   if ('associate' in db[modelName]) {
     db[modelName].associate(db);
   }

@@ -68,7 +68,7 @@ function start() {
   server.listen(config.web.port, function () {
     logger.info(config.web.name, config.web.url, 'start up');
   });
-  return db.sequelize.sync({force: false}).catch(err => {
+  return db.sequelize.sync({force: false}).catch((err) => {
     logger.error(err);
     process.exit(1);
   });
@@ -79,4 +79,3 @@ if (!module.parent) {
 } else {
   exports.start = start;
 }
-

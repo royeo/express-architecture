@@ -2,7 +2,8 @@
 
 /**
  * 对 controller 进行异常捕捉
- * @param {any}
+ * @param {any} params
+ * @return params
  */
 module.exports = function (params) {
   if (typeof params === 'function') {
@@ -20,7 +21,7 @@ module.exports = function (params) {
 
 /**
  * 处理错误
- * @param {any} controller
+ * @param {function} controller
  * @returns {function}
  */
 function catchError(controller) {

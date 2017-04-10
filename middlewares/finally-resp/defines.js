@@ -25,7 +25,7 @@ const base = [
 const statusToCode = {};
 const codeToStatus = {};
 
-base.forEach(item => {
+base.forEach((item) => {
   statusToCode[item.status] = codeToStatus[item.code] = item;
 });
 
@@ -33,4 +33,3 @@ module.exports = {
   statusToCode,
   codeToStatus
 };
-
