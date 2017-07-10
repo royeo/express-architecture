@@ -4,19 +4,10 @@ const pkg = require('../package.json');
 
 module.exports = {
   web: {
-    url: 'http://127.0.0.1:6666',
+    url: 'http://127.0.0.1:5566',
     host: '127.0.0.1',
-    port: 6666,
+    port: 5566,
     name: pkg.name
-  },
-  view: {
-    cache: {},
-    engine: 'ejs',
-    dir: 'views'
-  },
-  static: {
-    dir: path.join(__dirname, '../public'),
-    maxAge: 1000 * 60 * 60
   },
   log: {
     dir            : '../logs',

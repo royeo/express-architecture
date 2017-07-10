@@ -2,7 +2,7 @@
 
 require('./global_regist');
 const web = require('./servers/web');
+const cron = require('./cron/cron');
 
-Promise.resolve([web]).each(function (app) {
-  app.start();
-});
+web.start();
+cron.init();

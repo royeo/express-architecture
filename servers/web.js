@@ -1,6 +1,5 @@
 'use strict';
 
-const path = require('path');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -8,14 +7,13 @@ const expressSession = require('express-session');
 const SessStore = require('connect-redis')(expressSession);
 const responseTime = require('response-time');
 const compression = require('compression');
+const expressValidator = require('express-validator');
 
 const router = require('../routes');
 const finallyResp = require('../middlewares/finally-resp');
+const validatorConfig = require('../middlewares/param-validator/config');
 
 const app = express();
-
-app.set('views', path.join(__dirname, '..', config.view.dir));
-app.set('view engine', config.view.engine);
 
 // 禁用 x-powered-by 头部
 // 防止攻击者可能会使用该头（缺省情况下已启用）来检测运行 Express 的应用程序，然后发动针对特定目标的攻击。
@@ -42,6 +40,8 @@ app.use(expressSession({
   cookie            : {maxAge: 1000 * 60 * 60 * 24 * 7}
 }));
 
+app.use(expressValidator(validatorConfig));
+
 app.use(router);
 
 app.use(function (req, res, next) {
@@ -59,14 +59,10 @@ function start() {
   app.listen(config.web.port, function () {
     logger.info(config.web.name, config.web.url, 'start up');
   });
-  return db.sequelize.sync({force: false}).catch(err => {
+  return db.sequelize.sync({force: false}).catch((err) => {
     logger.error(err);
     process.exit(1);
   });
 }
 
-if (!module.parent) {
-  start();
-} else {
-  exports.start = start;
-}
+exports.start = start;
