@@ -36,7 +36,7 @@ app.use(expressSession({
   resave            : true,
   saveUninitialized : false,
   secret            : 'secret',
-  store             : new SessStore(config.redisSession),
+  // store             : new SessStore(config.redisSession),
   cookie            : {maxAge: 1000 * 60 * 60 * 24 * 7}
 }));
 

@@ -2,7 +2,8 @@
 
 module.exports = {
   index,
-  detail
+  detail,
+  getEnv
 };
 
 function index(req, res, next) {
@@ -11,4 +12,8 @@ function index(req, res, next) {
 
 function detail(req, res, next) {
   return next({code: 200, ext: "It's is Detail."});
+}
+
+function getEnv(req, res, next) {
+  return next({code: 200, ext: process.env.NODE_ENV});
 }
