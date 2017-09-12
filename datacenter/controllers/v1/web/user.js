@@ -20,14 +20,7 @@ module.exports = handleError({
  * @returns
  */
 async function login(req, res, next) {
-  let schema = {
-    demo     : {in: 'query', isInt: {options: {max: 3, min: 1}}, defaultValue: 2, optional: true},
-    name     : {in: 'body', isLength: {options: {max: 20}}, notEmpty: true},
-    password : {in: 'body', isLength: {options: {max: 20}}, notEmpty: true}
-  };
-  await paramValidator(schema, req);
   let {name, password} = req.body;
-  let a = await userService.getProduct();
   let userInfo = await userService.verifyAccount({name, password});
   if (userInfo) {
     return next({code: 200, msg: '登录成功', ext: userInfo});
@@ -37,7 +30,7 @@ async function login(req, res, next) {
 
 /**
  * 注册账号
- * 
+ *
  * @param {any} req
  * @param {any} res
  * @param {any} next
