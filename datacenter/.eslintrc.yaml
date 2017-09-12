@@ -26,11 +26,12 @@
     NODE_CONFIG_DIR: true
     ROOT_PATH: true
     _: true
+    fs: true
+    path: true
     utils: true
     logger: true
     db: true
     models: true
-    sequelize: true
     config: true
 
   # "off"   or 0 - turn the rule off

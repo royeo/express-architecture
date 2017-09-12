@@ -1,11 +1,12 @@
 'use strict';
 
-const fse = require('fs-extra');
+const fse    = require('fs-extra');
 const log4js = require('log4js');
-const path = require('path');
 
+/* eslint-disable */
 fse.mkdirsSync(config.log.dir);
 fse.mkdirsSync(config.log.dir + '/main');
+/* eslint-enable */
 
 const log4jsConfig = {
   replaceConsole: config.log.replaceConsole,
