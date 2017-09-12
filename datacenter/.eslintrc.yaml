@@ -441,7 +441,7 @@
 
     # 总是将参数用小括号`()`括起来，统一一致。
     # --fix
-    arrow-parens: [1, always]
+    arrow-parens: [1, as-needed]
 
     # 强制在箭头函数的箭头前面和后面添加一个空格
     # --fix
