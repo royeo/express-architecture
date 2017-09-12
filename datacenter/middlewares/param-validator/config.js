@@ -1,10 +1,10 @@
 'use strict';
 
 // 自定义验证方法
-let customValidators = {
+const customValidators = {
   isArray(value) {
     try {
-      return _.isArray((typeof value === 'string') ? JSON.parse(value) : value);
+      return Array.isArray((typeof value === 'string') ? JSON.parse(value) : value);
     } catch (e) {
       return false;
     }
@@ -12,7 +12,15 @@ let customValidators = {
   isIntArray(value) {
     try {
       value = (typeof value === 'string') ? JSON.parse(value) : value;
-      return _.isArray(value) && _.every(value, (item) => _.isInteger(_.toInteger(item)));
+      return Array.isArray(value) && value.every(item => Number.isInteger(_.toInteger(item)));
+    } catch (e) {
+      return false;
+    }
+  },
+  isStringArray(value) {
+    try {
+      value = (typeof value === 'string') ? JSON.parse(value) : value;
+      return Array.isArray(value) && value.every(_.isString);
     } catch (e) {
       return false;
     }
@@ -28,12 +36,17 @@ let customValidators = {
 };
 
 // 自定义sanitizer
-let customSanitizers = {
+const customSanitizers = {
   toArray(value) {
     return (typeof value === 'string') ? JSON.parse(value) : value;
   },
   toIntArray(value) {
-    return _.map((typeof value === 'string') ? JSON.parse(value) : value, _.toInteger);
+    value = (typeof value === 'string') ? JSON.parse(value) : value;
+    return value.map(_.toInteger);
+  },
+  toStringArray(value) {
+    value = (typeof value === 'string') ? JSON.parse(value) : value;
+    return value.map(String);
   },
   toObject(value) {
     return (typeof value === 'string') ? JSON.parse(value) : value;
