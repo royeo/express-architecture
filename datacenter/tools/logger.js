@@ -13,22 +13,32 @@ const log4jsConfig = {
   level: config.log.level,
   appenders: [
     {
+      category: 'main',
       type: 'dateFile',
       filename: path.join(config.log.dir, 'main/'),
       pattern: 'yyyyMMdd',
       alwaysIncludePattern: true,
-      category: 'main',
-      maxLogSize: 20480,
+      maxLogSize: 1024 * 1024 * 30,
       backups: 3
     },
     {
+      category: 'main',
+      type: 'logLevelFilter',
+      level: 'WARN',
+      appender: {
+        type: 'file',
+        filename: path.join(config.log.dir, 'main.warn'),
+        maxLogSize: 1024 * 1024 * 30
+      }
+    },
+    {
+      category: 'main',
       type: 'logLevelFilter',
       level: 'ERROR',
-      category: 'main',
       appender: {
         type: 'file',
         filename: path.join(config.log.dir, 'main.error'),
-        maxLogSize: 20480
+        maxLogSize: 1024 * 1024 * 30
       }
     }
   ]
@@ -41,8 +51,10 @@ if (config.log.console) {
 }
 
 log4js.configure(log4jsConfig);
-let logger = log4js.getLogger('main');
-logger.setLevel(config.log.level);
-logger.log4js = log4js;
 
-module.exports = logger;
+const mainLogger = log4js.getLogger('main');
+
+mainLogger.setLevel(config.log.level);
+mainLogger.log4js = log4js;
+
+module.exports = mainLogger;
